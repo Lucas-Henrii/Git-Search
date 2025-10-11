@@ -34,9 +34,13 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
+    <div className="h-screen w-screen flex items-center justify-center gap-2 bg-[#C2255C] text-white">
+      <div className="gap-6 flex flex-col">
+        <h1 className="text-4xl">Git Search</h1>
+        <p className="w-[70%]">Encontre e se conecte com profissionais de forma rápida e fácil </p>
+      </div>
+      <form onSubmit={handleSubmit} className="bg-[#212529] flex flex-col items-center justify-center gap-4 p-4 pl-8 pr-8 rounded-2xl">
+        <h2 className="text-4xl mb-4 text-white font-bold">Login</h2>
         <Input
           label="Nome de usuário"
           type="text"
@@ -56,9 +60,11 @@ const Login = () => {
           onChange={handleChange}
           error={errors.password}
         />
-        <button type="submit">Entrar</button>
+        <button type="submit" className="bg-[#C2255C] text-white p-2 rounded-[4px] cursor-pointer w-full mt-4">Entrar</button>
+        <a href="">Esqueceu sua senha?</a>
+      <div className="mb-2">
+        <span>Não tem uma conta? </span><a href={"/Register"} className="text-[#C2255C]">Registrar-se</a></div>
       </form>
-      <a href={"/Register"}>Registrar-se</a>
     </div>
   );
 };
