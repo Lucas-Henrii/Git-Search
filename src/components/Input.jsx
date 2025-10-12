@@ -1,10 +1,10 @@
-const Input = ({ label, type, name, placeholder, value, onChange, error }) => {
+const Input = ({ label, type, name, placeholder, value, onChange, error, id }) => {
   return (
     <div className="flex flex-col gap-2 w-full text-white">
       <label htmlFor={name}>{label}</label>
       <input
         type={type}
-        id={name}
+        id={id}
         name={name}
         placeholder={placeholder}
         value={value}
