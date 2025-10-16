@@ -5,10 +5,9 @@ const Profile = () => {
   // 1. Captura o nome de usuário da URL
   const { username } = useParams();
 
-  const [repos, setRepos] = useState([]);
-
   // 2. Estados para o resultado
   const [user, setUser] = useState(null);
+  const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -93,80 +92,77 @@ const Profile = () => {
 
   // 5. Exibição do Perfil
   return (
-    <div className="p-8 max-w-3xl mx-auto bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8 text-center">
-        Perfil de {user?.login}
-      </h1>
-
-      {user && (
-        <div className="bg-white p-6 rounded-xl shadow-2xl flex items-center gap-6">
-          <img
-            src={user.avatar_url}
-            alt={`Avatar de ${user.login}`}
-            className="w-32 h-32 rounded-full border-4 border-[#C2255C]"
-          />
-          <div>
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              {user.name || user.login}
-            </h2>
-            <p className="text-xl text-gray-600 mb-3">@{user.login}</p>
-            <p className="text-gray-700">
-              {user.bio || "Sem biografia disponível."}
-            </p>
-            {/* ... (outros dados do perfil) */}
-            <a
-              href={user.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#C2255C] hover:underline mt-4 inline-block font-medium"
-            >
-              Ver no GitHub
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* Botão opcional para voltar */}
-      {repos.length > 0 ? (
-        <div className="space-y-3">
-          {repos.map((repo) => (
-            <div
-              key={repo.id}
-              className="p-4 border rounded-lg hover:bg-gray-50 transition duration-150"
-            >
+    <div className="bg-[#212529]">
+      <div className="p-8 max-w-3xl mx-auto bg-[#212529] min-h-screen">
+        {user && (
+          <div className="bg-[#212529] p-6 rounded-xl flex items-center gap-6">
+            <img
+              src={user.avatar_url}
+              alt={`Avatar de ${user.login}`}
+              className="w-20 h-20 rounded-full border-4 border-[#C2255C]"
+            />
+            <div>
+              <h2 className="text-3xl font-extrabold text-white">
+                {user.name || user.login}
+              </h2>
+              <p className="text-xl text-gray-300 mb-3">@{user.login}</p>
               <a
-                href={repo.html_url}
+                href={user.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lg font-bold text-blue-600 hover:underline"
+                className="text-[#C2255C] hover:underline mt-4 inline-block font-medium"
               >
-                {repo.name}
+                Ver no GitHub
               </a>
-              <p className="text-sm text-gray-700 mt-1">
-                {repo.description || "Sem descrição."}
-              </p>
-              <div className="flex gap-4 text-xs text-gray-500 mt-2">
-                <span>Linguagem: **{repo.language || "N/A"}**</span>
-                <span>🌟 {repo.stargazers_count}</span>
-                <span>
-                  Atualizado em: {new Date(repo.pushed_at).toLocaleDateString()}
-                </span>
-              </div>
             </div>
-          ))}
-        </div>
-      ) : (
-        <p className="text-gray-500">
-          Este usuário não possui repositórios públicos ou atingimos o limite de
-          requisições.
-        </p>
-      )}
-      <a
-        onClick={() => window.history.back()}
-        className="mt-8 block text-center text-blue-500 cursor-pointer hover:underline"
-      >
-        ← Fazer nova busca
-      </a>
+          </div>
+        )}
+
+        {repos.length > 0 ? (
+          <div className="space-y-3 flex flex-wrap gap-8">
+            {repos.map((repo) => (
+              <div
+                key={repo.id}
+                className="p-4 border justify-around flex flex-col border-gray-500 hover:border-white rounded-lg hover:bg-[#191C1F] transition duration-150 w-80 h-60 "
+              >
+                <h1 className="text-2xl font-semibold text-white">
+                  {repo.name}
+                </h1>
+                <p className="text-sm text-gray-700 mt-1">
+                  {repo.description || "Sem descrição."}
+                </p>
+                <div className="flex gap-1 text-xs text-gray-500 mt-2">
+                  <span>Linguagem: **{repo.language || "N/A"}**</span>
+                  <span>🌟 {repo.stargazers_count}</span>
+                  <span>
+                    Atualizado em:{" "}
+                    {new Date(repo.pushed_at).toLocaleDateString()}
+                  </span>
+                </div>
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-bold text-white bg-[#D6336C] p-1 w-[8rem] text-center rounded-[4px]"
+                >
+                  Repositório
+                </a>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-500">
+            Este usuário não possui repositórios públicos ou atingimos o limite
+            de requisições.
+          </p>
+        )}
+        <a
+          onClick={() => window.history.back()}
+          className="mt-8 block text-center text-blue-500 cursor-pointer hover:underline"
+        >
+          ← Fazer nova busca
+        </a>
+      </div>
     </div>
   );
 };

@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // 👈 IMPORTANTE: Adicione useNavigate
+import { useNavigate } from "react-router-dom";
 import Input from "../components/Input";
-// ❌ Removido o import do Profile, pois ele será renderizado em outra rota.
-// ❌ Removidas as funções e estados de API (users, loading, error, searchingUsers)
 
 const DashBoard = () => {
-  // Estado para controlar o input
   const [termoBusca, setTermoBusca] = useState("");
 
-  // Hook para navegação
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -17,8 +13,6 @@ const DashBoard = () => {
     const userToSearch = termoBusca.trim();
 
     if (userToSearch) {
-      // ✅ AÇÃO CRÍTICA: Navega para a rota de resultados, passando o usuário como parâmetro
-      // Ex: Se digitar "torvalds", a rota será /resultados/torvalds
       navigate(`/profile/${userToSearch}`);
     } else {
       alert("Por favor, digite um nome de usuário do GitHub.");
@@ -54,13 +48,10 @@ const DashBoard = () => {
           />
           <button
             type="submit"
-            // Não precisamos mais do loading aqui, pois a busca será na próxima página
             className="bg-[#C2255C] text-white p-2 rounded-[4px] cursor-pointer w-full mt-4"
           >
             Ver perfil do github
           </button>
-
-          {/* ❌ Removido o <Profile /> (SearchResults) */}
         </div>
       </form>
     </div>
