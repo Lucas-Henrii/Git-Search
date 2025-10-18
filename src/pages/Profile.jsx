@@ -12,7 +12,7 @@ const Profile = () => {
   const [error, setError] = useState(null);
 
   const fetchRepos = useCallback(async (query) => {
-    const repoApiUrl = `https://api.github.com/users/${query}/repos?sort=updated&per_page=10`; // Ordena por atualização, 10 por página
+    const repoApiUrl = `https://api.github.com/users/${query}/repos?sort=updated&per_page=10`;
 
     try {
       const response = await fetch(repoApiUrl);
@@ -76,7 +76,7 @@ const Profile = () => {
   // 4. Renderização
   if (loading) {
     return (
-      <div className="text-center mt-20 text-blue-600 text-xl">
+      <div className="text-center mt-20 text-[#C2255C] text-xl">
         Carregando perfil de **{username}**...
       </div>
     );
@@ -95,7 +95,13 @@ const Profile = () => {
     <div className="bg-[#212529]">
       <div className="p-8 max-w-3xl mx-auto bg-[#212529] min-h-screen">
         {user && (
-          <div className="bg-[#212529] p-6 rounded-xl flex items-center gap-6">
+          <div className="bg-[#212529] p-6 rounded-xl flex items-center gap-6 relative">
+            <a
+              onClick={() => window.history.back()}
+              className="mt-8 block text-center text-white bg-[#33363A] p-2 rounded cursor-pointer absolute right-0 top-0"
+            >
+              ← Fazer nova busca
+            </a>
             <img
               src={user.avatar_url}
               alt={`Avatar de ${user.login}`}
@@ -119,7 +125,7 @@ const Profile = () => {
         )}
 
         {repos.length > 0 ? (
-          <div className="space-y-3 flex flex-wrap gap-8">
+          <div className="space-y-3 flex flex-wrap gap-8 overflow-auto scrollbar-custom h-[23rem]">
             {repos.map((repo) => (
               <div
                 key={repo.id}
@@ -128,11 +134,10 @@ const Profile = () => {
                 <h1 className="text-2xl font-semibold text-white">
                   {repo.name}
                 </h1>
-                <p className="text-sm text-gray-700 mt-1">
+                <p className="text-sm text-gray-700 mt- truncate-single-line">
                   {repo.description || "Sem descrição."}
                 </p>
-                <div className="flex gap-1 text-xs text-gray-500 mt-2">
-                  <span>Linguagem: **{repo.language || "N/A"}**</span>
+                <div className="flex gap-1 text-xs text-gray-500 mt-2 justify-between">
                   <span>🌟 {repo.stargazers_count}</span>
                   <span>
                     Atualizado em:{" "}
@@ -156,12 +161,6 @@ const Profile = () => {
             de requisições.
           </p>
         )}
-        <a
-          onClick={() => window.history.back()}
-          className="mt-8 block text-center text-blue-500 cursor-pointer hover:underline"
-        >
-          ← Fazer nova busca
-        </a>
       </div>
     </div>
   );
