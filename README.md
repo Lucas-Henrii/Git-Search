@@ -1,12 +1,76 @@
-# React + Vite
+🚀 Git Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Git Search é uma aplicação desenvolvida para facilitar a busca e visualização de perfis e repositórios do GitHub.
+Com uma interface moderna e responsiva, o usuário pode se registrar, fazer login e explorar informações detalhadas sobre desenvolvedores e seus projetos.
 
-Currently, two official plugins are available:
+🧩 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Autenticação completa — Login e registro de novos usuários.
+🔍 Busca por usuários do GitHub — Encontre qualquer perfil público facilmente.
+📁 Visualização de repositórios — Veja a lista de projetos do usuário pesquisado.
+⭐ Detalhes dos repositórios — Exibe:
 
-## Expanding the ESLint configuration
+Nome do projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Descrição (quando disponível)
+
+Número de estrelas
+
+Data da última atualização
+🔗 Acesso direto ao GitHub — Vá para o perfil ou repositório original com um clique.
+
+
+🛠️ Tecnologias Utilizadas
+
+⚛️ React.js — Biblioteca JavaScript para construção de interfaces dinâmicas
+
+⚡ Vite — Ferramenta de build rápida e moderna
+
+🎨 TailwindCSS — Framework CSS utilitário para estilização responsiva
+
+🌐 GitHub API — Fonte de dados dos perfis e repositórios
+
+⚙️ Como Executar o Projeto
+
+Clone o repositório:
+
+git clone https://github.com/Lucas-Henrii/git-search.git
+
+
+Acesse a pasta do projeto:
+
+cd git-search
+
+
+Instale as dependências:
+
+npm install
+
+
+Execute o projeto em ambiente de desenvolvimento:
+
+npm run dev
+
+
+Acesse no navegador:
+
+http://localhost:5173
+
+🧠 Aprendizados
+
+Durante o desenvolvimento do Git Search, foram aplicados e reforçados conceitos como:
+
+Consumo de APIs REST utilizando fetch()
+
+Manipulação de estado e props no React
+
+Autenticação de usuários com controle de rotas
+
+Estilização moderna e responsiva com TailwindCSS
+
+Integração com API do GitHub e tratamento de dados em tempo real
+
+📄 Licença
+
+Este projeto é de uso livre para fins de estudo e aprendizado.
+Sinta-se à vontade para clonar, testar e contribuir!
